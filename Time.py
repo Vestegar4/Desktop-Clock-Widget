@@ -1,8 +1,8 @@
 import sys
 import ctypes
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QSystemTrayIcon, QMenu, QAction, QStyle
 from PyQt5.QtCore import QTimer, Qt, QTime, QDate
-from PyQt5.QtGui import QFontDatabase, QFont
+from PyQt5.QtGui import QFontDatabase, QFont, QIcon
 
 def enable_blur(hwnd):
     class ACCENT_POLICY(ctypes.Structure):
@@ -34,7 +34,7 @@ def enable_blur(hwnd):
 app = QApplication(sys.argv)
 
 window = QWidget()
-window.setWindowFlags(Qt.FramelessWindowHint)
+window.setWindowFlags(Qt.FramelessWindowHint | Qt.Tool)
 window.setAttribute(Qt.WA_TranslucentBackground)
 
 window.setStyleSheet("""
@@ -96,5 +96,18 @@ window.show()
 
 hwnd = int(window.winId())
 enable_blur(hwnd)
+
+tray_icon_image = app.style().standardIcon(QStyle.SP_DesktopIcon)
+tray_icon = QSystemTrayIcon(tray_icon_image, app)
+tray_icon.setToolTip("Aesthetic Clock Widget")
+
+menu = QMenu()
+
+quit_action = QAction("Keluar", app)
+quit_action.triggered.connect(app.quit)
+menu.addAction(quit_action)
+
+tray_icon.setContextMenu(menu)
+tray_icon.show()
 
 sys.exit(app.exec_())
