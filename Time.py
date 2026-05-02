@@ -99,11 +99,11 @@ enable_blur(hwnd)
 
 tray_icon_image = app.style().standardIcon(QStyle.SP_DesktopIcon)
 tray_icon = QSystemTrayIcon(tray_icon_image, app)
-tray_icon.setToolTip("Aesthetic Clock Widget")
+tray_icon.setToolTip("Desktop Clock Widget")
 
 menu = QMenu()
 
-quit_action = QAction("Keluar", app)
+quit_action = QAction("Exit", app)
 quit_action.triggered.connect(app.quit)
 menu.addAction(quit_action)
 
