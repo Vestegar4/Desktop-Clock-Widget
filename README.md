@@ -2,8 +2,6 @@
 
 A minimalist and aesthetic digital desktop clock widget built with **Python** and **PyQt5**. This application features a *frameless* design with a transparent, *acrylic*-style blur effect in the background.
 
-![Application Screenshot](Storage/Screenshot3.png)
-![Application Screenshot](Storage/Screenshot2.png)
 ![Application Screenshot](Storage/Screenshot1.png)
 
 ## ✨ Key Features
